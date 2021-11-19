@@ -5,9 +5,18 @@
 var Messages = {
 
   // TODO: Define how you want to store your messages.
-  _data: null,
+  _data: {},
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
-
+  update: function(messages) {
+    messages.forEach(msg => {
+      Messages._data[msg.message_id] = {
+        username: msg.username,
+        text: msg.text,
+        roomname: msg.roomname,
+        updatedAt: msg.updated_at
+      };
+    });
+  }
 };
