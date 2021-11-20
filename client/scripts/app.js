@@ -6,7 +6,7 @@ var App = {
 
   $spinner: $('.spinner img'),
 
-  username: 'Jake and Yasin',
+  username: 'anonymous',
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -26,8 +26,11 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Messages.update(data);
-
+      if (Messages._data.length === 0 || data[0].message_id !== parseInt(Object.keys(Messages._data)[Object.keys(Messages._data).length - 1])) {
+        Messages.update(data);
+        MessagesView.render();
+      }
+      callback();
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
     });
