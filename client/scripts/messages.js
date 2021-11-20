@@ -13,12 +13,13 @@ var Messages = {
 
     messages.forEach(msg => {
 
-      Messages._data[msg.message_id] = {
+      Messages._data.push({
         username: msg.username,
         text: msg.text,
         roomname: msg.roomname,
-        updatedAt: msg.updated_at
-      };
+        updatedAt: msg.updated_at,
+        id: msg.message_id
+      });
     });
   }
 };

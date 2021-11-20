@@ -26,7 +26,7 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      if (Messages._data.length === 0 || data[0].message_id !== parseInt(Object.keys(Messages._data)[Object.keys(Messages._data).length - 1])) {
+      if (Messages._data.length === 0 || data[0].message_id !== Messages._data[0].id) {
         Messages.update(data);
         MessagesView.render();
       }
