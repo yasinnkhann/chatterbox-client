@@ -7,16 +7,9 @@ var Friends = {
 
   _data: new Set(),
   userNameClick: function() {
-    $('.username').on('click', function(event) {
-      //console.log(event)
-      Friends.toggleStatus(event.currentTarget.innerText)
-      // let friend = $(this).html().trim();
-      // console.log(friend);
-      // Friends.toggleStatus(friend);
-      // if (friend !== 'anonymous') {
-      //   Friends._data.add(friend);
-      // }
-    })
+    $('.username').on('click', function(e) {
+      Friends.toggleStatus(e.currentTarget.innerText);
+    });
   },
 
   isFriend: function(friend) {
@@ -24,13 +17,13 @@ var Friends = {
   },
 
   toggleStatus: function(friend) {
-    if (friend == 'anonymous') {
-        return;
+    if (friend === 'anonymous') {
+      return;
     }
     if (Friends.isFriend(friend)) {
       Friends._data.delete(friend);
     } else {
-      Friends._data.add(friend)
+      Friends._data.add(friend);
     }
   }
   // TODO: Define methods which allow you to add, toggle,

@@ -25,6 +25,7 @@ var Rooms = {
         }
       }
     }
+    count = 0;
     Rooms._data = Rooms.filteredRooms;
   }
 };
