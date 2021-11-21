@@ -19,17 +19,22 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    RoomsView.handleClick();
+    // Friends.userNameClick();
+
     // get new messages every 5 seconds
     setInterval(App.fetch, 5000);
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+
       // examine the response from the server request:
-      if (Messages._data.length === 0 || data[0].message_id !== Messages._data[0].id) {
         Messages.update(data);
-        MessagesView.render();
-      }
+
+      Rooms.renderRooms(data);
+      RoomsView.render(Rooms._data);
+
       callback();
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.

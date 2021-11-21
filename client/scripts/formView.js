@@ -16,7 +16,7 @@ var FormView = {
 
     // create an object that collects users query values
     var message = {
-      roomname: 'lobby',
+      roomname: $('#rooms select').val(),
       text: $('#message').val(),
       username: App.username
     };

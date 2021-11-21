@@ -17,7 +17,7 @@ var MessagesView = {
     //how to render a message
     // MessageView.render()
     let $message = MessageView.render(message);
-    MessagesView.$chats.prepend($message);
+    MessagesView.$chats.append($message);
   },
 
   render: function() {
@@ -29,6 +29,7 @@ var MessagesView = {
         MessagesView.renderMessage(msg);
       }
     });
+    Friends.userNameClick();
   },
 
 
